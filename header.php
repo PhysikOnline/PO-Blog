@@ -25,7 +25,18 @@
 <?php function for_whatever_reason_I_need_a_function_for_this( $length ) {
     return 43;
 }
-add_filter( 'excerpt_length', 'for_whatever_reason_I_need_a_function_for_this'); ?>
+add_filter( 'excerpt_length', 'for_whatever_reason_I_need_a_function_for_this');
+?>
+
+<?php
+
+$page_child = get_pages( array('child_of' => '15') );
+$IDs_of_excluded_pages_array = array();
+foreach ( $page_child as $page ) {
+    $IDs_of_excluded_pages_array[] = $page->ID;
+}
+$IDs_of_excluded_pages_string = implode(',', $IDs_of_excluded_pages_array);
+?>
 
 <!--NAVBAR-->
 <nav id="nav" class="light-blue darken-4 z-depth-3">
@@ -37,11 +48,11 @@ add_filter( 'excerpt_length', 'for_whatever_reason_I_need_a_function_for_this');
             <ul id="nav-mobile" class="right hide-on-med-and-down"> 
                 <!-- To exclude pages, add their ID to the 'exclude'-Comma separated list -->
                 <?php 
-                $args = array('title_li' => 0, 'exclude' => '18' ); 
+                $args = array('title_li' => 0, 'exclude' => $IDs_of_excluded_pages_string ); 
                 wp_list_pages( $args ); ?>
             </ul>
             <ul id="slide-out" class="side-nav hide-on-large-only">
-                <?php $args = array('title_li' => 0, 'exclude' => '18' ); wp_list_pages( $args ); ?>
+                <?php $args = array('title_li' => 0, 'exclude' => $IDs_of_excluded_pages_string ); wp_list_pages( $args ); ?>
             </ul>
             <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>
         </div>
