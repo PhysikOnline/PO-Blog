@@ -1,0 +1,21 @@
+Required Plug-Ins: 
+- Posts in Page by IvyCat, Inc.
+- Catch IDs by Catch Themes (Not required but recommended as it displays the page IDs in the admin panel)
+
+
+Adding Members:
+
+For now there is neither a clean method to add a member to the member list on the 'about us' page nor to create the members page on the other hand.
+
+To add a member page do the following steps:
+- 
+- Retrieve the ID of the page
+- Go to the header.php file and add the ID to the 'exclude' list in the Navbar to exclude the member page from being shown in the Navbar
+- 
+
+To add a member card to the 'about us' page do the following steps:
+- Retrieve the ID of the member page
+- add following code to the member div:
+    <?php member_card( $member_first_name, $member_last_name, $page_id, $member_descr ); ?>
+where you set the variables according to the member
+- to add a picture, put the picture in the images folder of the theme and rename it as <members first name>.jpg
