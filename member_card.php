@@ -3,7 +3,7 @@
 function member_card( $member_first_name, $member_last_name, $page_id, $member_descr ) {
     
     echo '
-    <div class="member_card_hover_effect card col s12 m4 l4">
+    <div class="member_card_hover_effect card col s10 offset-s1 m4 l4">
     <div class="card-image waves-effect waves-block waves-light">
     <img class="activator" src="'; 
     

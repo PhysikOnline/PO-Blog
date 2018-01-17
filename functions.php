@@ -7,4 +7,60 @@ function get_random_color() {
     $random_keys = array_rand($colors,1);
     return $colors[$random_keys];
 }
+
+
+add_shortcode( 'newproject', 'new_project' );
+// [newproject project_name="#" tag_name="#" color="#" project_descr="#"]
+
+function new_project( $atts ){
+
+$a = shortcode_atts( array(
+    'project_name' => 'Projekt Name',
+    'tag_name' => 'Tag Name',
+    'color' => 'grey',
+    'project_descr' => 'Beschreibung'
+), $atts );
+
+$project_name = $a['project_name'];
+$tag_name = $a['tag_name'];
+$color = $a['color'];
+$project_descr = $a['project_descr'];
+
+echo '<div class="card horizontal" style="margin-bottom: 6vh;">
+<div class="card-stacked" >
+    <div class="card-content">
+        <div class="row">
+            <div class="col s12 m12 l5">
+                <div style="text-align: center">
+                    <div style="margin-bottom: 3vh;">
+                    <h3 class="thin">' . $project_name . '</h3>
+                    </div>
+                    <div class="divider" style="margin: 3vh;"> </div>
+                    <div style="padding: 5vh;">
+                    <span class="light">' . 
+                    $project_descr . 
+                    '</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m12 l7">
+                <div id="' . $tag_name . '-carousel" class="' . $color . ' carousel carousel-slider" data-indicators="true">
+                    <div class="hide-on-small-only carousel-fixed-item right row">
+                        <div class="col m1 offset-m10" style="background-color: rgba(255,255,255,0.7);">
+                            <i class="center material-icons waves-effect waves-light" onclick="$(\'#' . $tag_name . '-carousel\').carousel(\'prev\');">chevron_left</i>
+                        </div>
+                        <div class="col m1" style="background-color: rgba(255,255,255,0.7);">
+                            <i class="center material-icons waves-effect waves-light" onclick="$(\'#' . $tag_name . '-carousel\').carousel(\'next\');">chevron_right</i>
+                        </div>
+                    </div>';
+
+echo do_shortcode("[ic_add_posts tag='$tag_name' template='single_project_template.php' showposts='3']");
+
+echo            '</div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>';
+} 
 ?>

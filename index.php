@@ -13,7 +13,6 @@
 </div>
 <!--END TITELBILD-->
 
-
  <!--MAIN-->       
 <div class="section grey lighten-3">
 

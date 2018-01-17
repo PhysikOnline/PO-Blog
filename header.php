@@ -46,14 +46,22 @@ $IDs_of_excluded_pages_string = implode(',', $IDs_of_excluded_pages_array);
                 <img class="responsive-img" src="<?php bloginfo( 'template_url')?>/assets/images/Logo-Klein.png" style="padding-left: 40px; padding-right: 40px;">
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down"> 
-                <!-- To exclude pages, add their ID to the 'exclude'-Comma separated list -->
                 <?php 
                 $args = array('title_li' => 0, 'exclude' => $IDs_of_excluded_pages_string ); 
                 wp_list_pages( $args ); ?>
             </ul>
+            <!-- SIDE-NAV -->
             <ul id="slide-out" class="side-nav hide-on-large-only">
-                <?php $args = array('title_li' => 0, 'exclude' => $IDs_of_excluded_pages_string ); wp_list_pages( $args ); ?>
+            <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="images/office.jpg">
+                </div>
+            </div>
+            </li>
+                <?php wp_list_pages( $args ); ?>
             </ul>
+            <!-- /SIDE-NAV -->
             <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>
         </div>
     </div>
